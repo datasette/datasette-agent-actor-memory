@@ -1,0 +1,144 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.aam-app {
+  margin: 1rem 0;
+  max-width: 800px;
+}
+
+.aam-app h1 {
+  margin-top: 0;
+  font-size: 1.4rem;
+}
+
+.aam-app .aam-meta {
+  color: #666;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.aam-app .aam-search,
+.aam-app .aam-new input,
+.aam-app .aam-new textarea {
+  width: 100%;
+  padding: 0.4rem 0.5rem;
+  font: inherit;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.aam-app .aam-new {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  background: #fafafa;
+}
+
+.aam-app .aam-new label {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.aam-app .aam-new textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.aam-app .aam-new-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.aam-app button {
+  padding: 0.4rem 0.8rem;
+  font: inherit;
+  border: 1px solid #888;
+  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.aam-app button.primary {
+  background: #276890;
+  color: #fff;
+  border-color: #276890;
+}
+
+.aam-app button.danger {
+  border-color: #a33;
+  color: #a33;
+}
+
+.aam-app button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.aam-app .aam-error {
+  color: #a33;
+  font-size: 0.9rem;
+}
+
+.aam-app .aam-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.aam-app .aam-row {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 0.6rem 0.75rem;
+  background: #fff;
+}
+
+.aam-app .aam-row-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.aam-app .aam-row-key {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-weight: 600;
+}
+
+.aam-app .aam-row-time {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.aam-app .aam-row-text {
+  margin: 0.4rem 0;
+  white-space: pre-wrap;
+}
+
+.aam-app .aam-row-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.aam-app .aam-edit textarea,
+.aam-app .aam-edit input {
+  width: 100%;
+  font: inherit;
+  padding: 0.3rem 0.4rem;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}
+
+.aam-app .aam-empty {
+  color: #666;
+  font-style: italic;
+  padding: 1rem 0;
+}
