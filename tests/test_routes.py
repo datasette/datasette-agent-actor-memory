@@ -125,13 +125,9 @@ async def test_cross_actor_isolation_via_api():
 
     # bob sees nothing and cannot touch alice's row
     assert (await ds.client.get(BASE, cookies=bob)).json() == {"memories": []}
+    assert (await ds.client.get(f"{BASE}/{alice_id}", cookies=bob)).status_code == 404
     assert (
-        await ds.client.get(f"{BASE}/{alice_id}", cookies=bob)
-    ).status_code == 404
-    assert (
-        await ds.client.post(
-            f"{BASE}/{alice_id}", json={"text": "hacked"}, cookies=bob
-        )
+        await ds.client.post(f"{BASE}/{alice_id}", json={"text": "hacked"}, cookies=bob)
     ).status_code == 404
     assert (
         await ds.client.post(f"{BASE}/{alice_id}/delete", cookies=bob)

@@ -96,10 +96,7 @@ class MemoryDB:
             params["text"] = text
         sets.append("updated_at = strftime('%Y-%m-%dT%H:%M:%fZ','now')")
 
-        sql = (
-            f"UPDATE {TABLE} SET {', '.join(sets)} "
-            "WHERE actor_id = :aid AND id = :id"
-        )
+        sql = f"UPDATE {TABLE} SET {', '.join(sets)} WHERE actor_id = :aid AND id = :id"
         await self.database.execute_write(sql, params)
         return await self.get_by_id(actor_id, note_id)
 

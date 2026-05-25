@@ -37,6 +37,7 @@ def _method_dispatch_routes(raw_routes):
         if len(method_map) == 1:
             result.append((path, next(iter(method_map.values()))))
         else:
+
             def _make_dispatcher(m):
                 async def dispatcher(
                     request,

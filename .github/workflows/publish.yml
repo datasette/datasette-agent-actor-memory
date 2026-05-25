@@ -1,0 +1,56 @@
+name: Publish
+
+on:
+  release:
+    types: [created]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+    steps:
+    - uses: actions/checkout@v5
+    - uses: astral-sh/setup-uv@v7
+      with:
+        python-version: ${{ matrix.python-version }}
+    - uses: actions/setup-node@v6
+      with:
+        cache: npm
+        cache-dependency-path: frontend/package-lock.json
+    - uses: extractions/setup-just@v3
+    - name: Install frontend dependencies
+      run: npm install --prefix frontend
+    - name: Build frontend
+      run: just frontend
+    - name: Run tests
+      run: just test
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [test]
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v5
+    - uses: astral-sh/setup-uv@v7
+      with:
+        python-version: "3.12"
+    - uses: actions/setup-node@v6
+      with:
+        cache: npm
+        cache-dependency-path: frontend/package-lock.json
+    - uses: extractions/setup-just@v3
+    - name: Install frontend dependencies
+      run: npm install --prefix frontend
+    - name: Build frontend
+      run: just frontend
+    - name: Build package
+      run: uv build
+    - name: Upload to GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: dist/*

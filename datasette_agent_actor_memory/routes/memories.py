@@ -121,9 +121,7 @@ async def update_memory(datasette, request, note_id: int):
         if not key:
             return _bad("'key' must not be empty")
     try:
-        row = await memory_db(datasette).update_by_id(
-            aid, note_id, key=key, text=text
-        )
+        row = await memory_db(datasette).update_by_id(aid, note_id, key=key, text=text)
     except sqlite3.IntegrityError:
         return _bad("a memory with that key already exists", status=409)
     if row is None:

@@ -98,9 +98,7 @@ async def _list_memories(datasette, actor):
     rows = await memory_db(datasette).list_for_actor(aid)
     return json.dumps(
         {
-            "_html": _widget_html(
-                datasette, "aam-memory-list", {"memories": rows}
-            ),
+            "_html": _widget_html(datasette, "aam-memory-list", {"memories": rows}),
             "memories": rows,
         }
     )
