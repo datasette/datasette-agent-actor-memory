@@ -1,6 +1,6 @@
 [project]
 name = "datasette-agent-actor-memory"
-version = "0.0.1a0"
+version = "0.0.1a1"
 description = "Per-actor private memory store for datasette-agent — agent tools + UI"
 readme = "README.md"
 authors = [{name = "Alex Garcia"}]
